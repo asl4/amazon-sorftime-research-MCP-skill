@@ -12,6 +12,8 @@
 - **关键词分析**: 流量来源、竞品布局、长尾词挖掘
 - **评论情感分析**: 优势聚类、痛点识别、改进建议
 - **市场洞察**: 季节性趋势、竞争格局、机会识别
+- **跨平台分析**: TikTok带货视频、达人分析、1688采购成本
+- **供应链调研**: 1688批发价格对比，利润空间测算
 
 ---
 
@@ -71,9 +73,17 @@ MCP 配置文件位于 `.mcp.json`，已配置 Sorftime 服务：
 | 西班牙 | ES | - | - |
 | 意大利 | IT | - | - |
 
-### 可用接口 (25个)
+### 支持的 TikTok 站点
 
-#### 产品相关 (9个)
+| 站点 | 代码 | 站点 | 代码 |
+|------|------|------|------|
+| 美国 | US | 菲律宾 | PH |
+| 英国 | GB | 越南 | VN |
+| 马来西亚 | MY | 印度尼西亚 | ID |
+
+### 可用接口 (34个)
+
+#### 亚马逊产品相关 (9个)
 | 接口 | 功能 |
 |------|------|
 | `product_detail` | 产品详情 |
@@ -85,21 +95,50 @@ MCP 配置文件位于 `.mcp.json`，已配置 Sorftime 服务：
 | `product_search` | 产品搜索筛选 |
 | `potential_product_search` | 潜力产品挖掘 |
 
-#### 类目相关 (7个)
+#### 亚马逊类目相关 (7个)
 | 接口 | 功能 |
 |------|------|
+| `category_name_search` | 类目名称搜索 |
+| `category_tree` | 类目树结构 |
 | `category_report` | 类目实时报告 |
 | `category_trend` | 类目趋势分析 |
 | `category_keywords` | 类目核心词 |
 | `category_market_search` | 类目市场搜索 |
+| `category_history_report` | 类目历史报告 |
 
-#### 关键词相关 (4个)
+#### 亚马逊关键词相关 (4个)
 | 接口 | 功能 |
 |------|------|
 | `keyword_detail` | 关键词详情 |
 | `keyword_trend` | 关键词趋势 |
 | `keyword_related_words` | 长尾词挖掘 |
 | `keyword_search_result` | 搜索结果排名 |
+
+#### TikTok 相关 (8个)
+| 接口 | 功能 |
+|------|------|
+| `tiktok_product_search` | TikTok产品搜索 |
+| `tiktok_product_detail` | TikTok产品详情 |
+| `tiktok_product_videos` | 带货视频分析 |
+| `tiktok_product_influencers` | 带货达人分析 |
+| `tiktok_product_trend` | TikTok产品趋势 |
+| `tiktok_influencer_search` | 达人搜索 |
+| `tiktok_category_name_search` | TikTok类目搜索 |
+| `tiktok_category_report` | TikTok类目报告 |
+
+#### 1688 供应链 (1个)
+| 接口 | 功能 |
+|------|------|
+| `products_1688` | 1688产品搜索/成本分析 |
+
+#### 关键词词库管理 (5个)
+| 接口 | 功能 |
+|------|------|
+| `add_keyword` | 添加关键词收藏 |
+| `move_keyword` | 移动关键词 |
+| `remove_keyword` | 删除关键词 |
+| `query_keyword_dict_list` | 查询收藏夹列表 |
+| `query_keyword_dict` | 查询收藏的词 |
 
 ---
 
@@ -163,7 +202,9 @@ https://sorftime.com/zh-cn/mcp
 
 ### Q: 支持哪些分析维度？
 
-A: 支持 15+ 维度分析，包括：
+A: 支持 25+ 维度分析，包括：
+
+**亚马逊产品分析**
 - 产品基础信息
 - 销量/价格趋势
 - 用户评价情感
@@ -171,6 +212,32 @@ A: 支持 15+ 维度分析，包括：
 - 竞品关键词布局
 - 类目市场分析
 - 长尾词挖掘
+
+**TikTok 跨平台分析**
+- TikTok 相似产品搜索
+- 带货视频分析
+- 达人带货分析
+- TikTok 产品趋势
+
+**供应链成本分析**
+- 1688 采购价格对比
+- 利润空间测算
+
+### Q: 如何使用 TikTok 和 1688 接口？
+
+A: 直接使用 curl 调用相应接口：
+
+```bash
+# TikTok 产品搜索
+curl -s -X POST "https://mcp.sorftime.com?key=YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"tiktok_product_search","arguments":{"site":"US","searchName":"wireless earbuds"}}}'
+
+# 1688 采购成本查询
+curl -s -X POST "https://mcp.sorftime.com?key=YOUR_API_KEY" \
+  -H "Content-Type: application/json" \
+  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"products_1688","arguments":{"searchName":"蓝牙耳机"}}}'
+```
 
 ### Q: 分析需要多长时间？
 

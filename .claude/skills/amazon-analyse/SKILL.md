@@ -569,10 +569,28 @@ ls -la reports/analysis_*_US_20260302.md
 | `query_keyword_dict_list` | 查询收藏夹列表 | 1 |
 | `query_keyword_dict` | 查询收藏的词 | 1 |
 
+#### 1688 供货平台 (1个)
+| 接口 | 用途 | 调用消耗 |
+|------|------|----------|
+| `products_1688` | 1688产品搜索/采购成本分析 | 1 |
+
+#### TikTok 电商平台 (8个)
+| 接口 | 用途 | 调用消耗 |
+|------|------|----------|
+| `tiktok_product_search` | TikTok产品搜索 | 1 |
+| `tiktok_product_detail` | TikTok产品详情 | 1 |
+| `tiktok_product_videos` | TikTok带货视频 | 1 |
+| `tiktok_product_influencers` | TikTok带货达人分析 | 1 |
+| `tiktok_product_trend` | TikTok产品趋势 | 1 |
+| `tiktok_influencer_search` | TikTok达人搜索 | 1 |
+| `tiktok_category_name_search` | TikTok类目搜索 | 1 |
+| `tiktok_category_report` | TikTok类目报告 | 1 |
+
 ### 调研维度与接口对照表
 
 当用户需要调研特定维度时，使用以下接口：
 
+#### 亚马逊产品调研
 | 调研维度 | 使用接口 | 关键参数 |
 |----------|----------|----------|
 | **产品基础信息** | `product_detail` | asin |
@@ -581,16 +599,55 @@ ls -la reports/analysis_*_US_20260302.md
 | **流量来源** | `product_traffic_terms` | asin |
 | **竞品关键词布局** | `competitor_product_keywords` | asin |
 | **关键词排名监控** | `product_keyword_rank_trend` | asin, keyword |
+| **子体明细** | `product_variations` | asin |
+
+#### 亚马逊关键词调研
+| 调研维度 | 使用接口 | 关键参数 |
+|----------|----------|----------|
 | **关键词数据分析** | `keyword_detail` | keyword |
 | **关键词搜索结果** | `keyword_search_result` | searchKeyword |
 | **关键词历史趋势** | `keyword_trend` | searchKeyword |
 | **长尾词挖掘** | `keyword_related_words` | searchKeyword |
+
+#### 亚马逊类目调研
+| 调研维度 | 使用接口 | 关键参数 |
+|----------|----------|----------|
+| **类目搜索(获nodeid)** | `category_name_search` | searchName |
 | **类目分析** | `category_report` | nodeId |
 | **类目趋势** | `category_trend` | nodeId, trendIndex |
 | **类目关键词** | `category_keywords` | nodeId |
-| **选品筛选** | `product_search` | 多种筛选参数 |
+| **类目市场筛选** | `category_market_search` | 多种筛选参数 |
+
+#### 亚马逊选品调研
+| 调研维度 | 使用接口 | 关键参数 |
+|----------|----------|----------|
+| **产品搜索/筛选** | `product_search` | searchName + 筛选参数 |
 | **潜力产品挖掘** | `potential_product_search` | searchName, price_range等 |
+
+#### TikTok 跨平台调研
+| 调研维度 | 使用接口 | 关键参数 |
+|----------|----------|----------|
+| **相似产品分析** | `tiktok_product_search` | site, searchName |
+| **TikTok产品详情** | `tiktok_product_detail` | site, productId |
+| **带货视频分析** | `tiktok_product_videos` | site, productId |
+| **带货达人分析** | `tiktok_product_influencers` | site, productId |
+| **产品趋势追踪** | `tiktok_product_trend` | site, productId |
+| **达人搜索** | `tiktok_influencer_search` | site, searchName |
+| **TikTok类目分析** | `tiktok_category_report` | site, nodeId |
+
+#### 供应链成本调研
+| 调研维度 | 使用接口 | 关键参数 |
+|----------|----------|----------|
+| **1688采购成本** | `products_1688` | searchName |
+
+### 支持的平台站点
+
+| 平台 | 站点数量 | 支持站点 |
+|------|----------|----------|
+| **亚马逊** | 14个 | US, GB, DE, FR, IN, CA, JP, ES, IT, MX, AE, AU, BR, SA |
+| **TikTok** | 6个 | US, GB, MY, PH, VN, ID |
+| **1688** | - | 国内批发采购平台 |
 
 ---
 
-*本技能文档版本: v2.1 | 最后更新: 2026-03-02*
+*本技能文档版本: v2.2 | 最后更新: 2026-03-03*

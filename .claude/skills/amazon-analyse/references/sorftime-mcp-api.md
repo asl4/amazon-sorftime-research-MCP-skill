@@ -363,8 +363,140 @@ curl -s -X POST "https://mcp.sorftime.com?key={API_KEY}" \
 
 ---
 
-## 支持的亚马逊站点
+## 五、1688 供货平台接口
+
+### 5.1 1688产品搜索 (products_1688)
+**调用消耗**: 1
+
+**用途**: 通过1688平台找产品的采购货源，分析产品采购成本价
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| searchName | string | 是 | 查询的产品名称 |
+| page | int | 否 | 页码索引，默认第1页，每页50条 |
+
+---
+
+## 六、TikTok 电商平台接口
+
+### 6.1 TikTok产品搜索 (tiktok_product_search)
+**调用消耗**: 1
+
+**用途**: 查询产品在TikTok平台上的相似产品，分析销售情况
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site | string | 是 | TikTok站点 US/GB/MY/PH/VN/ID |
+| searchName | string | 是 | 查询的产品名称 |
+| page | int | 是 | 页码索引，默认第1页，每页50条 |
+
+---
+
+### 6.2 TikTok产品详情 (tiktok_product_detail)
+**调用消耗**: 1
+
+**用途**: 查询TikTok平台产品详情
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site | string | 是 | TikTok站点 US/GB/MY/PH/VN/ID |
+| productId | string | 是 | 产品ID |
+
+---
+
+### 6.3 TikTok带货视频 (tiktok_product_videos)
+**调用消耗**: 1
+
+**用途**: 查询TikTok平台产品的带货视频
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site | string | 是 | TikTok站点 US/GB/MY/PH/VN/ID |
+| productId | string | 是 | 产品ID |
+| page | int | 是 | 页码索引，默认第1页，每页50条 |
+
+---
+
+### 6.4 TikTok带货达人分析 (tiktok_product_influencers)
+**调用消耗**: 1
+
+**用途**: TikTok平台产品的带货达人分析
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site | string | 是 | TikTok站点 US/GB/MY/PH/VN/ID |
+| productId | string | 是 | 产品ID |
+
+---
+
+### 6.5 TikTok产品趋势 (tiktok_product_trend)
+**调用消耗**: 1
+
+**用途**: 查询TikTok平台产品趋势，返回销量、价格、星级、评论数量、新增带货视频数、新增带货达人数
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site | string | 是 | TikTok站点 US/GB/MY/PH/VN/ID |
+| productId | string | 是 | 产品ID |
+
+---
+
+### 6.6 TikTok达人搜索 (tiktok_influencer_search)
+**调用消耗**: 1
+
+**用途**: 按产品名称搜索相关带货达人
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site | string | 是 | TikTok站点 US/GB/MY/PH/VN/ID |
+| searchName | string | 是 | 搜索的产品名称 |
+| page | int | 是 | 页码索引，默认第1页，每页50条 |
+
+---
+
+### 6.7 TikTok类目搜索 (tiktok_category_name_search)
+**调用消耗**: 1
+
+**用途**: 按名称搜索TikTok上相关类目市场，返回类目市场名称和nodeid
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site | string | 是 | TikTok站点 US/GB/MY/PH/VN/ID |
+| searchName | string | 是 | 搜索的产品名称 |
+
+---
+
+### 6.8 TikTok类目报告 (tiktok_category_report)
+**调用消耗**: 1
+
+**用途**: 查询TikTok电商平台指定类目的类目数据报告
+
+**参数**:
+| 参数 | 类型 | 必填 | 说明 |
+|------|------|------|------|
+| site | string | 是 | TikTok站点 US/GB/MY/PH/VN/ID |
+| nodeId | string | 是 | 类目市场nodeid，可通过tiktok_category_name_search获得 |
+
+---
+
+## 支持的平台站点
+
+### 亚马逊 (14个站点)
 `US`, `GB`, `DE`, `FR`, `IN`, `CA`, `JP`, `ES`, `IT`, `MX`, `AE`, `AU`, `BR`, `SA`
+
+### TikTok (6个站点)
+`US`, `GB`, `MY`, `PH`, `VN`, `ID`
+
+### 1688 供货平台
+国内批发采购平台
 
 ## 调用限制
 - 大部分接口调用消耗: 1
@@ -373,4 +505,4 @@ curl -s -X POST "https://mcp.sorftime.com?key={API_KEY}" \
 
 ---
 
-*最后更新: 2026-03-02*
+*最后更新: 2026-03-03*
