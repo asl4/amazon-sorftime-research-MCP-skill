@@ -1,4 +1,4 @@
-# amazon sorftime research MCP skill - 亚马逊竞品分析工作区
+# amazon sorftime research MCP skill - 亚马逊竞品分析选品工具
 
 基于 Sorftime MCP 服务和 Claude Skills 的亚马逊竞品分析工具集。
 
