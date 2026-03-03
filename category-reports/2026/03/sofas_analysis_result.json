@@ -1,0 +1,26 @@
+{
+  "category": "Sofas & Couches",
+  "site": "US",
+  "nodeId": "3733551",
+  "scores": {
+    "market_size": 7,
+    "growth_potential": 18,
+    "competition": 18,
+    "entry_barriers": 13,
+    "profit_margin": 12,
+    "total": 68
+  },
+  "rating": "良好",
+  "recommendation": "可以考虑进入",
+  "statistics": {
+    "monthly_sales": 0,
+    "monthly_revenue": 0,
+    "avg_price": 0,
+    "median_price": 0,
+    "top3_product_share": 0,
+    "top3_brand_share": 0,
+    "amazon_share": 0,
+    "high_rating_share": 0,
+    "low_reviews_share": 0
+  }
+}

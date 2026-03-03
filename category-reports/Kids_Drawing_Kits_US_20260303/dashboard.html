@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>品类选品分析仪表板 - Kids' Drawing Kits</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .header {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .header h1 {
+            color: #1f2937;
+            font-size: 28px;
+            margin-bottom: 10px;
+        }
+
+        .header .meta {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .score-card {
+            background: white;
+            border-radius: 16px;
+            padding: 30px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .score-circle {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            background: conic-gradient(#F59E0B 57%, #e5e7eb 57%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+        }
+
+        .score-circle::before {
+            content: '';
+            width: 150px;
+            height: 150px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+        }
+
+        .score-value {
+            position: relative;
+            text-align: center;
+        }
+
+        .score-value .number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #F59E0B;
+        }
+
+        .score-value .label {
+            font-size: 14px;
+            color: #6b7280;
+        }
+
+        .score-rating {
+            text-align: right;
+        }
+
+        .score-rating .rating {
+            font-size: 36px;
+            font-weight: bold;
+            color: #F59E0B;
+        }
+
+        .score-rating .advice {
+            font-size: 16px;
+            color: #6b7280;
+            margin-top: 5px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+        }
+
+        .card h3 {
+            color: #1f2937;
+            font-size: 18px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #f3f4f6;
+        }
+
+        .stat-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #f3f4f6;
+        }
+
+        .stat-row:last-child {
+            border-bottom: none;
+        }
+
+        .stat-label {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .stat-value {
+            color: #1f2937;
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .score-bar {
+            margin-bottom: 15px;
+        }
+
+        .score-bar-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 5px;
+            font-size: 14px;
+        }
+
+        .score-bar-name {
+            color: #1f2937;
+            font-weight: 500;
+        }
+
+        .score-bar-value {
+            color: #6b7280;
+        }
+
+        .score-bar-track {
+            height: 8px;
+            background: #e5e7eb;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .score-bar-fill {
+            height: 100%;
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .table th {
+            background: #f9fafb;
+            color: #6b7280;
+            font-weight: 600;
+            font-size: 12px;
+            text-align: left;
+            padding: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .table td {
+            padding: 12px;
+            border-bottom: 1px solid #f3f4f6;
+            font-size: 14px;
+        }
+
+        .table tr:hover {
+            background: #f9fafb;
+        }
+
+        .rank {
+            display: inline-flex;
+            width: 28px;
+            height: 28px;
+            align-items: center;
+            justify-content: center;
+            background: #f3f4f6;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 12px;
+        }
+
+        .rank.top1 {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: white;
+        }
+
+        .rank.top2 {
+            background: linear-gradient(135deg, #9ca3af, #6b7280);
+            color: white;
+        }
+
+        .rank.top3 {
+            background: linear-gradient(135deg, #d97706, #b45309);
+            color: white;
+        }
+
+        .chart-container {
+            position: relative;
+            height: 300px;
+        }
+
+        .footer {
+            text-align: center;
+            color: white;
+            padding: 20px;
+            font-size: 14px;
+        }
+
+        .btn-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #4472C4;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #375a9e;
+        }
+
+        .btn-success {
+            background: #10B981;
+            color: white;
+        }
+
+        .btn-success:hover {
+            background: #059669;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>亚马逊品类选品分析仪表板</h1>
+            <div class="meta">
+                品类: Kids' Drawing Kits | 站点: US | 分析时间: 2026-03-03 | Node ID: 19431268011
+            </div>
+            <div class="btn-group">
+                <button class="btn btn-primary" onclick="window.open('category_Kids_Drawing_Kits_US_20260303.md', '_blank')">查看 Markdown 报告</button>
+                <button class="btn btn-success" onclick="window.open('category_report_Kids_Drawing_Kit_US.xlsx', '_blank')">下载 Excel 报告</button>
+            </div>
+        </div>
+
+        <!-- Score Card -->
+        <div class="score-card">
+            <div class="score-circle">
+                <div class="score-value">
+                    <div class="number">57</div>
+                    <div class="label">综合得分</div>
+                </div>
+            </div>
+            <div class="score-rating">
+                <div class="rating">一般</div>
+                <div class="advice">谨慎进入</div>
+            </div>
+        </div>
+
+        <!-- Scores Grid -->
+        <div class="grid">
+            <div class="card">
+                <h3>五维评分</h3>
+
+                <div class="score-bar">
+                    <div class="score-bar-header">
+                        <span class="score-bar-name">市场规模</span>
+                        <span class="score-bar-value">8/20</span>
+                    </div>
+                    <div class="score-bar-track">
+                        <div class="score-bar-fill" style="width: 40%; background: linear-gradient(90deg, #3b82f6, #1d4ed8);"></div>
+                    </div>
+                </div>
+
+                <div class="score-bar">
+                    <div class="score-bar-header">
+                        <span class="score-bar-name">增长潜力</span>
+                        <span class="score-bar-value">19/25</span>
+                    </div>
+                    <div class="score-bar-track">
+                        <div class="score-bar-fill" style="width: 76%; background: linear-gradient(90deg, #10b981, #059669);"></div>
+                    </div>
+                </div>
+
+                <div class="score-bar">
+                    <div class="score-bar-header">
+                        <span class="score-bar-name">竞争烈度</span>
+                        <span class="score-bar-value">11/20</span>
+                    </div>
+                    <div class="score-bar-track">
+                        <div class="score-bar-fill" style="width: 55%; background: linear-gradient(90deg, #f59e0b, #d97706);"></div>
+                    </div>
+                </div>
+
+                <div class="score-bar">
+                    <div class="score-bar-header">
+                        <span class="score-bar-name">进入壁垒</span>
+                        <span class="score-bar-value">11/20</span>
+                    </div>
+                    <div class="score-bar-track">
+                        <div class="score-bar-fill" style="width: 55%; background: linear-gradient(90deg, #8b5cf6, #7c3aed);"></div>
+                    </div>
+                </div>
+
+                <div class="score-bar">
+                    <div class="score-bar-header">
+                        <span class="score-bar-name">利润空间</span>
+                        <span class="score-bar-value">8/15</span>
+                    </div>
+                    <div class="score-bar-track">
+                        <div class="score-bar-fill" style="width: 53%; background: linear-gradient(90deg, #ec4899, #db2777);"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>市场数据</h3>
+
+                <div class="stat-row">
+                    <span class="stat-label">Top100月销量</span>
+                    <span class="stat-value">31,481 件</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Top100月销额</span>
+                    <span class="stat-value">$380,347.06</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">平均价格</span>
+                    <span class="stat-value">$10.64</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">中位数价格</span>
+                    <span class="stat-value">$9.00</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">平均评分</span>
+                    <span class="stat-value">4.63</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Top3品牌占比</span>
+                    <span class="stat-value">59.8%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">Amazon自营占比</span>
+                    <span class="stat-value">28.1%</span>
+                </div>
+                <div class="stat-row">
+                    <span class="stat-label">高评分占比</span>
+                    <span class="stat-value">96.2%</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts -->
+        <div class="grid">
+            <div class="card">
+                <h3>品牌销量分布 (Top 8)</h3>
+                <div class="chart-container">
+                    <canvas id="brandChart"></canvas>
+                </div>
+            </div>
+
+            <div class="card">
+                <h3>价格区间分布</h3>
+                <div class="chart-container">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Top Products Table -->
+        <div class="card">
+            <h3>Top 10 热销产品</h3>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>排名</th>
+                        <th>ASIN</th>
+                        <th>产品标题</th>
+                        <th>价格</th>
+                        <th>月销量</th>
+                        <th>评分</th>
+                        <th>品牌</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><span class="rank top1">1</span></td>
+                        <td><code>B0FQXWXFWZ</code></td>
+                        <td>Bluey Aqua Art – Friends Forever</td>
+                        <td>$4.99</td>
+                        <td>8,130</td>
+                        <td>4.7</td>
+                        <td>JOYIN</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank top2">2</span></td>
+                        <td><code>B0D1PQ3TKD</code></td>
+                        <td>Tara Toys Minecraft Design A Vinyl Toy Figure</td>
+                        <td>$7.99</td>
+                        <td>4,380</td>
+                        <td>4.8</td>
+                        <td>LAOESE</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank top3">3</span></td>
+                        <td><code>B0DY324Q92</code></td>
+                        <td>Crayola Giant Pokemon Coloring Book (288 Pages)</td>
+                        <td>$5.89</td>
+                        <td>2,766</td>
+                        <td>4.8</td>
+                        <td>Crayola</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank">4</span></td>
+                        <td><code>B08LPRSMXC</code></td>
+                        <td>Crayola Scribble Scrubbies Glam Pack (4 Pets)</td>
+                        <td>$22.00</td>
+                        <td>2,426</td>
+                        <td>4.8</td>
+                        <td>Bendon</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank">5</span></td>
+                        <td><code>B0DTB3PX36</code></td>
+                        <td>Crayola Scribble Scrubbies Deluxe Bluey Playset</td>
+                        <td>$9.00</td>
+                        <td>1,658</td>
+                        <td>4.5</td>
+                        <td>Spirograph</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank">6</span></td>
+                        <td><code>B0DYG7PY4W</code></td>
+                        <td>Bendon Monster Jam Activity Book</td>
+                        <td>$4.44</td>
+                        <td>1,425</td>
+                        <td>4.6</td>
+                        <td>Spirograph</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank">7</span></td>
+                        <td><code>B0CRJ1FXVV</code></td>
+                        <td>Crayola Minecraft POPs 3D Art Kit for Kids</td>
+                        <td>$17.99</td>
+                        <td>1,246</td>
+                        <td>4.7</td>
+                        <td>Crayola</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank">8</span></td>
+                        <td><code>B0D54J4F94</code></td>
+                        <td>Bendon Sonic the Hedgehog Coloring and Activity Book</td>
+                        <td>$5.45</td>
+                        <td>1,187</td>
+                        <td>4.6</td>
+                        <td>ERTIUANIO</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank">9</span></td>
+                        <td><code>B09PGV61BW</code></td>
+                        <td>Bluey Window Art Suncatchers Kit for Kids to Paint</td>
+                        <td>$14.99</td>
+                        <td>1,157</td>
+                        <td>4.6</td>
+                        <td>Crayola</td>
+                    </tr>
+                    <tr>
+                        <td><span class="rank">10</span></td>
+                        <td><code>B0D7NPVX23</code></td>
+                        <td>Melissa & Doug Water Wow! Take-Along Reusable Set</td>
+                        <td>$17.00</td>
+                        <td>1,093</td>
+                        <td>4.5</td>
+                        <td>PERFQU</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <div class="footer">
+            数据来源: Sorftime MCP | 生成时间: 2026-03-03 | 仅供内部参考
+        </div>
+    </div>
+
+    <script>
+        // Brand Chart
+        const brandCtx = document.getElementById('brandChart').getContext('2d');
+        new Chart(brandCtx, {
+            type: 'bar',
+            data: {
+                labels: ['JOYIN', 'Crayola', 'LAOESE', 'Bendon', 'Spirograph', 'ERTIUANIO', 'PERFQU', 'Newluck'],
+                datasets: [{
+                    label: '月销量',
+                    data: [8331, 6107, 4380, 3090, 3083, 1187, 1093, 884],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(16, 185, 129, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(139, 92, 246, 0.8)',
+                        'rgba(236, 72, 153, 0.8)',
+                        'rgba(6, 182, 212, 0.8)',
+                        'rgba(249, 115, 22, 0.8)',
+                        'rgba(34, 197, 94, 0.8)'
+                    ],
+                    borderRadius: 8
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            callback: function(value) {
+                                return value.toLocaleString();
+                            }
+                        }
+                    }
+                }
+            }
+        });
+
+        // Price Chart
+        const priceCtx = document.getElementById('priceChart').getContext('2d');
+        new Chart(priceCtx, {
+            type: 'doughnut',
+            data: {
+                labels: ['$0-5', '$5-10', '$10-15', '$15-20', '$20+'],
+                datasets: [{
+                    data: [8553, 15845, 4210, 3107, 1984],
+                    backgroundColor: [
+                        'rgba(59, 130, 246, 0.8)',
+                        'rgba(16, 185, 129, 0.8)',
+                        'rgba(245, 158, 11, 0.8)',
+                        'rgba(139, 92, 246, 0.8)',
+                        'rgba(236, 72, 153, 0.8)'
+                    ]
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'bottom'
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>

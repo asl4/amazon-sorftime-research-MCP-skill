@@ -1,0 +1,300 @@
+{
+  "category": "Kids' Drawing Kits",
+  "site": "US",
+  "date": "2026-03-03",
+  "nodeId": "19431268011",
+  "statistics": {
+    "total_sales": 31481,
+    "total_revenue": 380347.06000000006,
+    "avg_price": 10.637500000000001,
+    "median_price": 9.0,
+    "avg_rating": 4.63,
+    "top3_brand_share": 59.77573774657729,
+    "amazon_share": 28.058193831199773,
+    "high_rated_share": 96.19770655315905
+  },
+  "scores": {
+    "market_size_score": 8,
+    "growth_score": 19,
+    "competition_score": 11,
+    "barrier_score": 11,
+    "profit_score": 8,
+    "total_score": 57,
+    "rating": "一般",
+    "rating_color": "#F59E0B"
+  },
+  "brands": [
+    {
+      "name": "JOYIN",
+      "sales": 8331,
+      "share": 26.46358120771259
+    },
+    {
+      "name": "Crayola",
+      "sales": 6107,
+      "share": 19.399002572980528
+    },
+    {
+      "name": "LAOESE",
+      "sales": 4380,
+      "share": 13.913153965884185
+    },
+    {
+      "name": "Bendon",
+      "sales": 3090,
+      "share": 9.815444236205966
+    },
+    {
+      "name": "Spirograph",
+      "sales": 3083,
+      "share": 9.793208602013912
+    },
+    {
+      "name": "ERTIUANIO",
+      "sales": 1187,
+      "share": 3.7705282551380197
+    },
+    {
+      "name": "PERFQU",
+      "sales": 1093,
+      "share": 3.47193545313046
+    },
+    {
+      "name": "Newluck",
+      "sales": 884,
+      "share": 2.808042946539182
+    },
+    {
+      "name": "Kalysky",
+      "sales": 724,
+      "share": 2.2997998792922716
+    },
+    {
+      "name": "Disney Stitch",
+      "sales": 613,
+      "share": 1.947206251389727
+    }
+  ],
+  "products": [
+    {
+      "ASIN": "B0FQXWXFWZ",
+      "title": "Bluey Aqua Art – Friends Forever",
+      "price": 4.99,
+      "sales": 8130,
+      "rating": 4.7,
+      "brand": "JOYIN",
+      "seller": "JoyinDirect",
+      "reviews": 17805,
+      "revenue": 118103.39
+    },
+    {
+      "ASIN": "B0D1PQ3TKD",
+      "title": "Tara Toys Minecraft Design A Vinyl™ Toy Figure with Washable Markers, 5-Pieces, 3 Years and Up",
+      "price": 7.99,
+      "sales": 4380,
+      "rating": 4.8,
+      "brand": "LAOESE",
+      "seller": "FUN-USA",
+      "reviews": 30752,
+      "revenue": 21374.81
+    },
+    {
+      "ASIN": "B0DY324Q92",
+      "title": "Crayola Giant Pokemon Coloring Book (288 Pages), 2 Sticker Sheets, Coloring Book for Kids & Adults, Travel Activity, Pokemon Gift for Kids, 3+",
+      "price": 5.89,
+      "sales": 2766,
+      "rating": 4.8,
+      "brand": "Crayola",
+      "seller": "Amazon",
+      "reviews": 3511,
+      "revenue": 52733.62
+    },
+    {
+      "ASIN": "B08LPRSMXC",
+      "title": "Crayola Scribble Scrubbies Glam Pack (4 Pets), Washable Pet Care Toy & Coloring Animal Craft Kit, Gift for Kids, Playset for Girls & Boys, Ages 3+",
+      "price": 22.0,
+      "sales": 2426,
+      "rating": 4.8,
+      "brand": "Bendon",
+      "seller": "Crenstone",
+      "reviews": 2827,
+      "revenue": 19260.72
+    },
+    {
+      "ASIN": "B0DTB3PX36",
+      "title": "Crayola Scribble Scrubbies Deluxe Bluey Playset (3ct), Toddler Arts & Crafts Kit, Washable Stickers, Bluey Toys, Gift for Girls & Boys, Ages 3+",
+      "price": 9.0,
+      "sales": 1658,
+      "rating": 4.5,
+      "brand": "Spirograph",
+      "seller": "Amazon",
+      "reviews": 2367,
+      "revenue": 22801.28
+    },
+    {
+      "ASIN": "B0DYG7PY4W",
+      "title": "Bendon Monster Jam Activity Book | Monster Trucks | Officially Licensed (Jumbo)",
+      "price": 4.44,
+      "sales": 1425,
+      "rating": 4.6,
+      "brand": "Spirograph",
+      "seller": "Amazon",
+      "reviews": 1821,
+      "revenue": 12640.68
+    },
+    {
+      "ASIN": "B0CRJ1FXVV",
+      "title": "Crayola Minecraft POPs 3D Art Kit for Kids, Create 3D Characters, Coloring Activity Set with Markers & Stickers, Minecraft Toys, Gift for Boys & Girls",
+      "price": 17.99,
+      "sales": 1246,
+      "rating": 4.7,
+      "brand": "Crayola",
+      "seller": "Amazon",
+      "reviews": 856,
+      "revenue": 10886.89
+    },
+    {
+      "ASIN": "B0D54J4F94",
+      "title": "Bendon Sonic the Hedgehog Coloring and Activity Book with Imagine Ink",
+      "price": 5.45,
+      "sales": 1187,
+      "rating": 4.6,
+      "brand": "ERTIUANIO",
+      "seller": "jiangshang sport",
+      "reviews": 3919,
+      "revenue": 29837.08
+    },
+    {
+      "ASIN": "B09PGV61BW",
+      "title": "Bluey Window Art Suncatchers Kit for Kids to Paint, Great at-Home Craft Activity or Birthday Party Idea, Toys for Ages 3, 4, 5, 6",
+      "price": 14.99,
+      "sales": 1157,
+      "rating": 4.6,
+      "brand": "Crayola",
+      "seller": "Amazon",
+      "reviews": 2045,
+      "revenue": 7062.5
+    },
+    {
+      "ASIN": "B0D7NPVX23",
+      "title": "Melissa & Doug Water Wow! Take-Along Reusable Color-Reveal Drawing Set Mess-Free Multi-Activity Pad with Water PenTravel Toy for Toddlers & Kids Ages 3+",
+      "price": 17.0,
+      "sales": 1093,
+      "rating": 4.5,
+      "brand": "PERFQU",
+      "seller": "Wenhandianzi",
+      "reviews": 6735,
+      "revenue": 29000.33
+    },
+    {
+      "ASIN": "B09GW93G4J",
+      "title": "Crayola Tropical Garden Adult Coloring Book (40pgs), Adult Coloring Pages, Stress Relief Activity, Gift for Teens & Adults, 9+",
+      "price": 4.91,
+      "sales": 938,
+      "rating": 4.8,
+      "brand": "Crayola",
+      "seller": "Robert`s Fojjer",
+      "reviews": 552,
+      "revenue": 20920.9
+    },
+    {
+      "ASIN": "B0149N11B0",
+      "title": "Disney Cars Coloring Book Bundle (Coloring Activity Set Featuring Lightning McQueen) (Blue)",
+      "price": 8.99,
+      "sales": 884,
+      "rating": 4.8,
+      "brand": "Newluck",
+      "seller": "Shop Life INC",
+      "reviews": 121,
+      "revenue": 5347.76
+    },
+    {
+      "ASIN": "B0FDKSMFJJ",
+      "title": "ZICOTO Fun Coloring Books for Kids Set of 3 – Exciting Dinosaur, Space & Trucks Coloring Book for Boys Ages 4–8 – Easy to Color Gift for Your Creative Little One",
+      "price": 7.99,
+      "sales": 724,
+      "rating": 4.6,
+      "brand": "Kalysky",
+      "seller": "KalyskyDirect",
+      "reviews": 1707,
+      "revenue": 3328.33
+    },
+    {
+      "ASIN": "B0G6SSJ7BR",
+      "title": "Ramadan Crafts for Kids, Eid Mubarak Arts and Crafts DIY Puzzle with Lanterns, Stars, Masjid, Moon, Castles, Ramadan Eid Activities Painting Kits for Islamic Gifts Party Favors & Goodies Bulk",
+      "price": 15.38,
+      "sales": 664,
+      "rating": 4.4,
+      "brand": "Bendon",
+      "seller": "Decade West",
+      "reviews": 1621,
+      "revenue": 2547.45
+    },
+    {
+      "ASIN": "B0DFGSS9HF",
+      "title": "BlissfulBlend Water Doodle Mat Kids Mess Free Coloring Doodle Mat Educational Toys for 3 4 5 6 7 8 Years Old with Magic Pens Educational Toys Toddler Boys Girls Christmas Birthday Holiday Present",
+      "price": 9.99,
+      "sales": 613,
+      "rating": 4.5,
+      "brand": "Disney Stitch",
+      "seller": "ToyWorld",
+      "reviews": 5149,
+      "revenue": 5960.05
+    },
+    {
+      "ASIN": "B07X5DZD5M",
+      "title": "Crayola Baby Shark Color Wonder Travel Activity Pad, Mess Free Coloring, Gift for Kids, 3, 4, 5,",
+      "price": 6.99,
+      "sales": 581,
+      "rating": 4.6,
+      "brand": "Just Play",
+      "seller": "Amazon",
+      "reviews": 410,
+      "revenue": 2178.54
+    },
+    {
+      "ASIN": "B0DGRM7KN5",
+      "title": "Disney Princess Magic Ink Coloring Book Set - Bundle with 3 Imagine Ink Books for Girls Kids Toddlers Featuring Disney Princess, Moana, and Minnie Mouse with Invisible Ink Pen and Stickers",
+      "price": 9.99,
+      "sales": 533,
+      "rating": 4.0,
+      "brand": "Skillmatics",
+      "seller": "Skillmatics USA",
+      "reviews": 71,
+      "revenue": 4423.08
+    },
+    {
+      "ASIN": "B0BVWLYZDG",
+      "title": "Bright Stripes Art on The Go Going Dotty Ocean Theme Travel Kit for Kids Ages 3+ | Compact Coloring Set with Crayons, Dot Stickers & Activity Book | Fun, Mess-Free Crafts for Toddlers and Preschoolers",
+      "price": 14.99,
+      "sales": 473,
+      "rating": 4.8,
+      "brand": "Minecraft",
+      "seller": "Get Trend USA",
+      "reviews": 364,
+      "revenue": 5275.6
+    },
+    {
+      "ASIN": "B07V49B3BS",
+      "title": "Marvel Avengers Big Fun Book to Color - 80 Pages",
+      "price": 3.79,
+      "sales": 402,
+      "rating": 4.6,
+      "brand": "MD CREATIVE",
+      "seller": "MDCeative",
+      "reviews": 7,
+      "revenue": 6098.61
+    },
+    {
+      "ASIN": "B0D8KGSPFT",
+      "title": "30 Sets Spring Suncatchers Window Art Kits, Vibrant DIY Sun Catchers Bulk Crafts Paint Your Own Window Ornaments for Adults Home Birthday Activity Project Decor",
+      "price": 19.99,
+      "sales": 201,
+      "rating": 4.9,
+      "brand": "JOYIN",
+      "seller": "JoyinDirect",
+      "reviews": 939,
+      "revenue": 565.44
+    }
+  ]
+}

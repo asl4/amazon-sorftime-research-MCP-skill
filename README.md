@@ -1,19 +1,28 @@
-# amazon sorftime research MCP skill - 亚马逊竞品分析选品工具
+# Amazon Sorftime MCP Skills - 亚马逊竞品分析与品类选品工具
 
-基于 Sorftime MCP 服务和 Claude Skills 的亚马逊竞品分析工具集。
+基于 Sorftime MCP 服务和 Claude Skills 的亚马逊分析工具集。
 
 ## 项目简介
 
-本项目配置了 Sorftime 跨境电商数据服务的 MCP (Model Context Protocol) 服务器，并开发了 `amazon-analyse` 技能，用于对亚马逊竞品 Listing 进行全维度穿透分析。
+本项目配置了 Sorftime 跨境电商数据服务的 MCP (Model Context Protocol) 服务器，并开发了两个核心技能：
+
+| 技能 | 分析对象 | 命令 | 用途 |
+|------|----------|------|------|
+| `amazon-analyse` | 单个Listing | `/amazon-analyse {ASIN} {SITE}` | 竞品Listing全维度穿透分析 |
+| `category-selection` | 整个品类 | `/category-select "{品类}" {SITE}` | 品类自动化选品分析 |
 
 ### 核心功能
 
+#### Listing级别分析 (amazon-analyse)
 - **竞品Listing分析**: 自动获取产品详情、评论、关键词、趋势数据
 - **关键词分析**: 流量来源、竞品布局、长尾词挖掘
 - **评论情感分析**: 优势聚类、痛点识别、改进建议
-- **市场洞察**: 季节性趋势、竞争格局、机会识别
 - **跨平台分析**: TikTok带货视频、达人分析、1688采购成本
-- **供应链调研**: 1688批发价格对比，利润空间测算
+
+#### 品类级别分析 (category-selection)
+- **市场大盘分析**: Top100产品数据 + 统计指标
+- **五维评分模型**: 市场规模、增长潜力、竞争烈度、进入壁垒、利润空间
+- **可视化报告**: Markdown + Excel + HTML 三种格式
 
 ---
 
@@ -25,11 +34,9 @@
 - 有效的 Sorftime API Key
 - Bash shell 环境
 
+### 获取 API Key
 
-
-### 安装 MCP 服务器
-
-MCP 配置文件位于 `.mcp.json`，已配置 Sorftime 服务：
+访问 [Sorftime MCP](https://sorftime.com/zh-cn/mcp) 获取 API Key，然后更新 `.mcp.json`:
 
 ```json
 {
@@ -45,6 +52,8 @@ MCP 配置文件位于 `.mcp.json`，已配置 Sorftime 服务：
 
 ### 使用分析技能
 
+#### 1. Listing竞品分析
+
 ```bash
 # 分析美国站竞品
 /amazon-analyse B07PWTJ4H1 US
@@ -53,92 +62,105 @@ MCP 配置文件位于 `.mcp.json`，已配置 Sorftime 服务：
 /amazon-analyse B08N5WRWNW DE
 ```
 
-分析完成后，报告将自动保存到 `reports/` 目录。
+**报告保存**: `reports/analysis_{ASIN}_{站点}_{日期}.md`
+
+#### 2. 品类选品分析
+
+```bash
+# 分析美国站沙发品类
+/category-select "Sofas & Couches" US
+
+# 分析美国站无线耳机品类
+/category-select "Wireless Earbuds" US
+
+# 指定Top20产品分析
+/category-select "Kids' Drawing Kits" US --limit 20
+```
+
+**报告保存**: `category-reports/{品类名称}_{站点}_{日期}/`
+- `index.html` - 报告导航首页
+- `dashboard.html` - 交互式可视化仪表板
+- `report.md` - 完整Markdown分析报告
+- `category_report_*.xlsx` - Excel数据表（含图表）
+- `data.json` - 原始数据JSON
 
 ---
 
-## Sorftime MCP 服务
+## 支持的站点
 
-### 支持的亚马逊站点
-
-| 站点 | 代码 | 站点 | 代码 |
-|------|------|------|------|
-| 美国 | US | 墨西哥 | MX |
-| 英国 | GB | 阿联酋 | AE |
-| 德国 | DE | 澳大利亚 | AU |
-| 法国 | FR | 巴西 | BR |
-| 印度 | IN | 沙特 | SA |
-| 加拿大 | CA | - | - |
-| 日本 | JP | - | - |
-| 西班牙 | ES | - | - |
-| 意大利 | IT | - | - |
-
-### 支持的 TikTok 站点
+### 亚马逊 (14个站点)
 
 | 站点 | 代码 | 站点 | 代码 |
 |------|------|------|------|
-| 美国 | US | 菲律宾 | PH |
-| 英国 | GB | 越南 | VN |
-| 马来西亚 | MY | 印度尼西亚 | ID |
+| 美国 | US | 日本 | JP |
+| 英国 | GB | 西班牙 | ES |
+| 德国 | DE | 意大利 | IT |
+| 法国 | FR | 加拿大 | CA |
+| 印度 | IN | 墨西哥 | MX |
+| 澳大利亚 | AU | 阿联酋 | AE |
+| 巴西 | BR | 沙特 | SA |
 
-### 可用接口 (34个)
+### TikTok (6个站点)
 
-#### 亚马逊产品相关 (9个)
+US, GB, MY, PH, VN, ID
+
+### 1688 供应链
+
+中国批发平台采购成本分析
+
+---
+
+## Sorftime MCP 接口
+
+### 亚马逊产品相关
+
 | 接口 | 功能 |
 |------|------|
 | `product_detail` | 产品详情 |
-| `product_variations` | 子体明细 |
 | `product_trend` | 销量/价格/排名趋势 |
-| `product_reviews` | 用户评论 |
+| `product_reviews` | 用户评论 (最多100条) |
 | `product_traffic_terms` | 流量关键词 |
 | `competitor_product_keywords` | 竞品关键词布局 |
 | `product_search` | 产品搜索筛选 |
-| `potential_product_search` | 潜力产品挖掘 |
 
-#### 亚马逊类目相关 (7个)
+### 亚马逊类目相关
+
 | 接口 | 功能 |
 |------|------|
-| `category_name_search` | 类目名称搜索 |
+| `category_name_search` | 类目名称搜索获取 nodeId |
+| `category_report` | 类目实时报告 (Top100产品 + 统计) |
 | `category_tree` | 类目树结构 |
-| `category_report` | 类目实时报告 |
-| `category_trend` | 类目趋势分析 |
-| `category_keywords` | 类目核心词 |
-| `category_market_search` | 类目市场搜索 |
-| `category_history_report` | 类目历史报告 |
+| `category_trend` | 类目历史趋势 |
+| `category_keywords` | 类目核心关键词 |
 
-#### 亚马逊关键词相关 (4个)
-| 接口 | 功能 |
-|------|------|
-| `keyword_detail` | 关键词详情 |
-| `keyword_trend` | 关键词趋势 |
-| `keyword_related_words` | 长尾词挖掘 |
-| `keyword_search_result` | 搜索结果排名 |
+### TikTok / 1688
 
-#### TikTok 相关 (8个)
-| 接口 | 功能 |
-|------|------|
-| `tiktok_product_search` | TikTok产品搜索 |
-| `tiktok_product_detail` | TikTok产品详情 |
-| `tiktok_product_videos` | 带货视频分析 |
-| `tiktok_product_influencers` | 带货达人分析 |
-| `tiktok_product_trend` | TikTok产品趋势 |
-| `tiktok_influencer_search` | 达人搜索 |
-| `tiktok_category_name_search` | TikTok类目搜索 |
-| `tiktok_category_report` | TikTok类目报告 |
+- `tiktok_product_search` - TikTok产品搜索
+- `tiktok_product_videos` - 带货视频分析
+- `products_1688` - 1688采购成本分析
 
-#### 1688 供应链 (1个)
-| 接口 | 功能 |
-|------|------|
-| `products_1688` | 1688产品搜索/成本分析 |
+---
 
-#### 关键词词库管理 (5个)
-| 接口 | 功能 |
-|------|------|
-| `add_keyword` | 添加关键词收藏 |
-| `move_keyword` | 移动关键词 |
-| `remove_keyword` | 删除关键词 |
-| `query_keyword_dict_list` | 查询收藏夹列表 |
-| `query_keyword_dict` | 查询收藏的词 |
+## 五维评分模型
+
+品类选品评分体系（100分制）：
+
+| 维度 | 分值 | 评分标准 |
+|------|------|----------|
+| 市场规模 | 20分 | 基于类目月销额 ($10M+/20分, $5M+/17分, $1M+/14分, $500K+/11分) |
+| 增长潜力 | 25分 | 基于Amazon自营占比 (越低越好，新品机会) |
+| 竞争烈度 | 20分 | 基于Top3品牌占比 (<30%/18分, <40%/15分, 其他/11分) |
+| 进入壁垒 | 20分 | Amazon压力 + 高评分门槛 (各占10分) |
+| 利润空间 | 15分 | 基于平均价格 ($100+/15分, $50+/13分, $20+/11分, $10+/8分) |
+
+### 综合评级
+
+| 总分 | 评级 | 建议 |
+|------|------|------|
+| 80-100 | 优秀 | 强烈推荐进入 |
+| 70-79 | 良好 | 可以考虑进入 |
+| 50-69 | 一般 | 谨慎进入 |
+| 0-49 | 较差 | 不建议进入 |
 
 ---
 
@@ -149,111 +171,36 @@ amazon-mcp/
 ├── .mcp.json                    # MCP 配置文件
 ├── .claude/
 │   └── skills/
-│       └── amazon-analyse/      # 竞品分析技能
-│           ├── SKILL.md         # 技能主文档
-│           └── references/
-│               └── sorftime-mcp-api.md  # API 完整文档
-├── reports/                     # 分析报告目录
-│   ├── analysis_XXX_US_YYYYMMDD.md
-│   └── archive/
-│       ├── 2025/
-│       └── 2024/
-└── README.md                    # 本文档
+│       ├── amazon-analyse/      # 竞品Listing分析技能
+│       │   ├── SKILL.md
+│       │   └── references/
+│       ├── category-selection/  # 品类选品分析技能
+│       │   ├── SKILL.md
+│       │   ├── scripts/         # 数据处理脚本
+│       │   │   ├── data_utils.py
+│       │   │   ├── parse_sorftime_sse.py
+│       │   │   └── generate_reports.py
+│       │   ├── assets/          # 模板文件
+│       │   │   └── dashboard_template.html
+│       │   └── references/
+│       └── skill-creator/       # 技能创建工具
+├── reports/                     # Listing分析报告
+│   └── analysis_{ASIN}_{站点}_{日期}.md
+├── category-reports/            # 品类选品报告
+│   └── {品类}_{站点}_{日期}/
+│       ├── index.html           # 导航页
+│       ├── dashboard.html       # 可视化仪表板
+│       ├── report.md            # Markdown报告
+│       ├── category_report_*.xlsx
+│       └── data.json
+└── README.md
 ```
-
----
-
-## 分析报告说明
-
-### 报告结构
-
-每份分析报告包含以下部分：
-
-1. **产品基础数据** - 价格、评分、排名、销量
-2. **关键词布局分析** - 流量词、竞品布局、文案策略
-3. **评论定性分析** - 优势/痛点 Top 3、改进建议
-4. **竞争策略分析** - SWOT 分析、市场机会
-5. **战略反击建议** - 关键词、定价、产品、Listing 优化
-
-### 报告命名规范
-
-```
-analysis_{ASIN}_{站点}_{日期}.md
-例: analysis_B07PWTJ4H1_US_20260302.md
-```
-
-### 报告管理
-
-| 阶段 | 时间范围 | 位置 |
-|------|----------|------|
-| 活跃期 | 最近30天 | `reports/` |
-| 参考期 | 1-6个月 | `reports/archive/YYYY/` |
-| 归档期 | 6个月+ | 可删除或压缩 |
-
----
-
-## 常见问题
-
-### Q: API Key 在哪里配置？
-
-A: 编辑 `.mcp.json` 文件，将 `YOUR_API_KEY` 替换为你的 Sorftime API Key。
-sorftime mcp key 地址：
-https://sorftime.com/zh-cn/mcp
-
-### Q: 支持哪些分析维度？
-
-A: 支持 25+ 维度分析，包括：
-
-**亚马逊产品分析**
-- 产品基础信息
-- 销量/价格趋势
-- 用户评价情感
-- 流量来源分析
-- 竞品关键词布局
-- 类目市场分析
-- 长尾词挖掘
-
-**TikTok 跨平台分析**
-- TikTok 相似产品搜索
-- 带货视频分析
-- 达人带货分析
-- TikTok 产品趋势
-
-**供应链成本分析**
-- 1688 采购价格对比
-- 利润空间测算
-
-### Q: 如何使用 TikTok 和 1688 接口？
-
-A: 直接使用 curl 调用相应接口：
-
-```bash
-# TikTok 产品搜索
-curl -s -X POST "https://mcp.sorftime.com?key=YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"tiktok_product_search","arguments":{"site":"US","searchName":"wireless earbuds"}}}'
-
-# 1688 采购成本查询
-curl -s -X POST "https://mcp.sorftime.com?key=YOUR_API_KEY" \
-  -H "Content-Type: application/json" \
-  -d '{"jsonrpc":"2.0","id":1,"method":"tools/call","params":{"name":"products_1688","arguments":{"searchName":"蓝牙耳机"}}}'
-```
-
-### Q: 分析需要多长时间？
-
-A: 通常 30-60 秒，取决于数据量和网络状况。
-
-### Q: 报告可以导出吗？
-
-A: 报告为 Markdown 格式，可转换为 PDF、HTML、Excel。
 
 ---
 
 ## 技能开发
 
 ### 创建新技能
-
-使用 `skill-creator` 技能快速创建：
 
 ```bash
 # 初始化新技能模板
@@ -273,17 +220,46 @@ A: 报告为 Markdown 格式，可转换为 PDF、HTML、Excel。
 
 ---
 
+## 常见问题
+
+### Q: ASIN 查询不到产品？
+
+A: Sorftime 数据库覆盖有限，先使用 `product_detail` 验证 ASIN。如果返回"未查询到对应产品"，尝试：
+1. 使用 `product_search` 搜索相关关键词
+2. 确认是正确的亚马逊站点
+3. 确认 ASIN 格式正确（10位字母数字）
+
+### Q: 报告中出现乱码？
+
+A: Sorftime 返回的中文是 Unicode 转义格式 (`\u4ea7\u54c1`)，技能会自动解码。如果仍有问题，检查 Python 环境是否支持 UTF-8 编码。
+
+### Q: Excel 报告无法打开？
+
+A: 确保安装了 `xlsxwriter` 库：`pip install xlsxwriter`
+
+---
+
 ## 更新日志
+
+### v2.3 (2026-03-03)
+- **优化**: 统一报告输出格式（Markdown + Excel + HTML Dashboard）
+- **新增**: index.html 导航页，集成所有报告格式
+- **新增**: data.json 原始数据导出
+- **修复**: 类目统计数据解析问题
+- **修复**: Excel 报告生成兼容性问题
+
+### v2.2 (2026-03-03)
+- **新增**: category-selection 品类选品分析技能
+- **新增**: 五维评分模型
+- **新增**: Excel + HTML 双报告格式
 
 ### v2.1 (2026-03-02)
 - 新增 Sorftime MCP API 完整文档
-- 添加调研维度与接口对照表
 - 优化报告结构
 
 ### v2.0 (2026-03-02)
 - 重新设计分析框架
 - 新增四大维度分析模型
-- 改进报告输出格式
 
 ### v1.0 (初始版本)
 - 基础竞品分析功能
@@ -304,4 +280,4 @@ MIT License
 
 ---
 
-*最后更新: 2026-03-02*
+*最后更新: 2026-03-03*

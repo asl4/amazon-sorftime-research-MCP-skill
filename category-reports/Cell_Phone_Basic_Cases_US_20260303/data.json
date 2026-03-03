@@ -1,0 +1,300 @@
+{
+  "category": "Cell Phone Basic Cases",
+  "site": "US",
+  "date": "2026-03-03",
+  "nodeId": "3081461011",
+  "statistics": {
+    "total_sales": 378547,
+    "total_revenue": 6565035.870000002,
+    "avg_price": 20.607000000000003,
+    "median_price": 17.99,
+    "avg_rating": 4.529999999999999,
+    "top3_brand_share": 48.10551926180897,
+    "amazon_share": 2.8641093444142998,
+    "high_rated_share": 68.28848201148074
+  },
+  "scores": {
+    "market_size_score": 17,
+    "growth_score": 23,
+    "competition_score": 11,
+    "barrier_score": 17,
+    "profit_score": 11,
+    "total_score": 79,
+    "rating": "良好",
+    "rating_color": "#3B82F6"
+  },
+  "brands": [
+    {
+      "name": "ESR",
+      "sales": 108243,
+      "share": 28.59433570996468
+    },
+    {
+      "name": "SKYLMW",
+      "sales": 46412,
+      "share": 12.260564738328398
+    },
+    {
+      "name": "Mkeke",
+      "sales": 27447,
+      "share": 7.250618813515891
+    },
+    {
+      "name": "SUPFINE",
+      "sales": 22518,
+      "share": 5.948534792245084
+    },
+    {
+      "name": "Misea",
+      "sales": 17773,
+      "share": 4.695057681080553
+    },
+    {
+      "name": "XQAGU",
+      "sales": 16013,
+      "share": 4.230122019194446
+    },
+    {
+      "name": "OTOFLY",
+      "sales": 15261,
+      "share": 4.031467690934019
+    },
+    {
+      "name": "inewateri",
+      "sales": 14654,
+      "share": 3.8711177211812537
+    },
+    {
+      "name": "Misscase",
+      "sales": 13829,
+      "share": 3.653179129672141
+    },
+    {
+      "name": "UEEBAI",
+      "sales": 13406,
+      "share": 3.5414360700256506
+    }
+  ],
+  "products": [
+    {
+      "ASIN": "B0FH655984",
+      "title": "SUPFINE Magnetic for iPhone 17 Pro Max Case (Compatible with MagSafe)(Military Grade Drop Protection) Translucent Matte Shockproof with Anti-Fingerprint Phone Cover, Black",
+      "price": 5.59,
+      "sales": 96199,
+      "rating": 4.3,
+      "brand": "ESR",
+      "seller": "Minghutech-US",
+      "reviews": 16635,
+      "revenue": 1099749.85
+    },
+    {
+      "ASIN": "B0FKT14YV2",
+      "title": "Temdan Designed for iPhone 17 Case, [Built-in Invisible Kickstand][Compatible with MagSafe][Military Grade Shockproof] Slim Translucent Matte Phone Case for iPhone 17 6.3 inch (Black)",
+      "price": 12.99,
+      "sales": 46412,
+      "rating": 4.6,
+      "brand": "SKYLMW",
+      "seller": "Shenzhen G-TECH communication co,.ltd.",
+      "reviews": 41621,
+      "revenue": 229582.32
+    },
+    {
+      "ASIN": "B0FD1TT96X",
+      "title": "Spigen for iPhone 17 Pro Max Case, Ultra Hybrid MagFit [TPU Covered Camera Control] [Anti-Yellowing] [Compatible with Magsafe] - Clear",
+      "price": 14.99,
+      "sales": 27447,
+      "rating": 4.6,
+      "brand": "Mkeke",
+      "seller": "Mkeke",
+      "reviews": 7620,
+      "revenue": 937885.47
+    },
+    {
+      "ASIN": "B0GC4SCS3J",
+      "title": "zapica Magnetic for iPhone 17 Pro Max Case, Upgraded [Camera Control Button] [Full Camera Protection] [with 1 Screen Protector] Translucent Matte Shockproof Protective Phone Cover, Starry Orange",
+      "price": 7.99,
+      "sales": 22518,
+      "rating": 4.6,
+      "brand": "SUPFINE",
+      "seller": "SUPFINE-US",
+      "reviews": 12437,
+      "revenue": 1545646.77
+    },
+    {
+      "ASIN": "B0CGCMS31N",
+      "title": "OtterBox iPhone 16e, 15, 14, & 13 Commuter Series Case - Black, Slim & Tough, Pocket-Friendly, with Port Protection",
+      "price": 20.79,
+      "sales": 17773,
+      "rating": 4.6,
+      "brand": "Misea",
+      "seller": "Misea",
+      "reviews": 3864,
+      "revenue": 166803.03
+    },
+    {
+      "ASIN": "B0FCY1Y4RB",
+      "title": "ESR for iPhone 17 Pro Max Case with Stash Stand, Camera Control Cover Compatible with MagSafe, Military-Grade Drop Protection for iPhone 17 Pro Max Phone Case, Scratch-Resistant Back Cover, Clear",
+      "price": 24.98,
+      "sales": 16013,
+      "rating": 4.5,
+      "brand": "XQAGU",
+      "seller": "XQAGU",
+      "reviews": 6364,
+      "revenue": 135081.7
+    },
+    {
+      "ASIN": "B0FDQQYDGW",
+      "title": "ORNARTO Compatible with iPhone 17 Pro Max Case 6.9', Slim Liquid Silicone 3 Layers Soft Gel Rubber Shockproof Protective Cover with Anti-Scratch Microfiber Lining-Chalk Pink",
+      "price": 9.97,
+      "sales": 15261,
+      "rating": 4.3,
+      "brand": "OTOFLY",
+      "seller": "OTOFLY®",
+      "reviews": 773,
+      "revenue": 228967.75
+    },
+    {
+      "ASIN": "B0FJPPLX99",
+      "title": "OtterBox iPhone 17 Pro Max Symmetry Series Clear Case - Clear",
+      "price": 54.99,
+      "sales": 14654,
+      "rating": 4.7,
+      "brand": "inewateri",
+      "seller": "Ownest",
+      "reviews": 8246,
+      "revenue": 141238.62
+    },
+    {
+      "ASIN": "B0FGCJLNDM",
+      "title": "TORRAS Ostand Q3 Air for iPhone 17 Pro Max Case with 360 Magnetic Stand, Fit for MagSafe, Mil-Grade Drop Tested, Camera Control Button, Shockproof Phone Case for iPhone 17 Pro Max 6.9“, Midnight Blue",
+      "price": 65.99,
+      "sales": 13829,
+      "rating": 4.5,
+      "brand": "Misscase",
+      "seller": "Misscase",
+      "reviews": 11303,
+      "revenue": 341388.39
+    },
+    {
+      "ASIN": "B0FJQ6QHSZ",
+      "title": "OtterBox iPhone 17 Profile Series Case - Black",
+      "price": 29.99,
+      "sales": 13406,
+      "rating": 4.5,
+      "brand": "UEEBAI",
+      "seller": "UEEBAI Direct",
+      "reviews": 11508,
+      "revenue": 129939.93
+    },
+    {
+      "ASIN": "B0DDXZYTKB",
+      "title": "Pepmune for iPhone 14 Pro Max Case, Curly Wave Frame Hard Translucent Matte Clear Back Cover for Women Men Compatible with Magsafe TPU Bumper Drop Proof Phone Case for iPhone 14 Pro Max, Purple",
+      "price": 0.0,
+      "sales": 12631,
+      "rating": 4.6,
+      "brand": "Teageo",
+      "seller": "Teageo",
+      "reviews": 8907,
+      "revenue": 156982.28
+    },
+    {
+      "ASIN": "B0FBX78GKW",
+      "title": "CASEKOO 360 Spin Magnetic Stand for iPhone 17 Pro Max Case [Fit for MagSafe][17FT Military Protection] Slim Hand-Polished Frame Titanium Alloy Sturdy Stand 6.9“, Glossy Cosmic Orange",
+      "price": 33.99,
+      "sales": 12044,
+      "rating": 4.6,
+      "brand": "ESR",
+      "seller": "Minghutech-US",
+      "reviews": 4852,
+      "revenue": 459445.11
+    },
+    {
+      "ASIN": "B0CQC6FZSN",
+      "title": "LCHULLE for iPhone 15 Case for Women Girls, Cute Wave Frame Curly Shape with Love Heart Pattern Raised Camera Protection Cover Luxury Plating Shockproof Phone Case for iPhone 15, Dark Purple",
+      "price": 8.99,
+      "sales": 11289,
+      "rating": 4.5,
+      "brand": "elago",
+      "seller": "elago®",
+      "reviews": 121136,
+      "revenue": 130127.47
+    },
+    {
+      "ASIN": "B0FMQX6S9T",
+      "title": "Dexnor for iPhone 17 Pro Max Case, [2 Front Frame & Built-in Flip Camera Cover & Kickstand], Compatible with MagSafe, Heavy-Duty Shockproof Portection Case with Screen Protector, 6.9 inch Black",
+      "price": 38.99,
+      "sales": 10842,
+      "rating": 4.6,
+      "brand": "OtterBox",
+      "seller": "Amazon",
+      "reviews": 43919,
+      "revenue": 397602.5
+    },
+    {
+      "ASIN": "B0FCYJN7LS",
+      "title": "ESR for iPhone 17 Pro Max Case, 7X Military-Grade Drop Protection, Shock-Absorbing Rugged Cover with Camera Control Button, MagSafe Accessories Compatible, Cyber Series, Black",
+      "price": 19.99,
+      "sales": 9939,
+      "rating": 4.6,
+      "brand": "FNTCASE",
+      "seller": "FNTCASE-feinuote",
+      "reviews": 1634,
+      "revenue": 89006.71
+    },
+    {
+      "ASIN": "B0FM31KDL5",
+      "title": "CACOE Magnetic Case for iPhone 17 6.3 inch-Compatible with MagSafe & Magnetic Car Phone Mount,Not Yellowing Anti-Scratch (Clear)",
+      "price": 9.99,
+      "sales": 9236,
+      "rating": 4.6,
+      "brand": "Follaroma",
+      "seller": "FusionCrest",
+      "reviews": 12381,
+      "revenue": 53472.73
+    },
+    {
+      "ASIN": "B0DJQHNGTG",
+      "title": "RMOCR Case for Samsung Galaxy A16 5G, Full Body Heavy Duty Rugged Shockproof Protective Phone Cover with Lanyard Strap, Tempered Glass Screen Protector and Camera Lens Cover, Mint Green",
+      "price": 6.99,
+      "sales": 8583,
+      "rating": 4.2,
+      "brand": "Goton",
+      "seller": "Yin-Goton-Authoried",
+      "reviews": 10147,
+      "revenue": 74600.73
+    },
+    {
+      "ASIN": "B0DLT3KKLK",
+      "title": "DEERLAMN Case for Samsung Galaxy S25 6.2-Inch with Slide Camera Cover+Screen Protector (1 Pack), Rotated Ring Kickstand Military Grade Shockproof Protective Cover-Navy Blue",
+      "price": 6.99,
+      "sales": 7794,
+      "rating": 4.6,
+      "brand": "Spigen",
+      "seller": "Spigen Inc",
+      "reviews": 322,
+      "revenue": 151943.99
+    },
+    {
+      "ASIN": "B0G1LTS582",
+      "title": "GVIEWIN for iPhone 17 Pro Max Case Compatible with MagSafe [Curly Wave Edge][Full Camera Protection] Floral Translucent Shockproof Magnetic Women Phone Case for 17 Pro Max, Floratopia/Brown",
+      "price": 17.99,
+      "sales": 7331,
+      "rating": 4.6,
+      "brand": "Janmitta",
+      "seller": "Jbao Direct",
+      "reviews": 3646,
+      "revenue": 54715.23
+    },
+    {
+      "ASIN": "B0DDXC4S87",
+      "title": "BERFY for iPhone 16 Pro Max Case, Compatible with MagSafe, Built-in Privacy Screen Protector and Camera Protection, Anti-Spy Full Body Shockproof Clear Phone Case for 16 Pro Max 6.9“, Black",
+      "price": 19.95,
+      "sales": 5346,
+      "rating": 4.5,
+      "brand": "MOZOTER",
+      "seller": "amaongkong",
+      "reviews": 24216,
+      "revenue": 40855.29
+    }
+  ]
+}

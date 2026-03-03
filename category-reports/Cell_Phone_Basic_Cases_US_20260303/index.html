@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>报告目录 - Cell Phone Basic Cases 品类分析</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header {
+            background: white; border-radius: 16px; padding: 40px;
+            margin-bottom: 30px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .header h1 { color: #1f2937; font-size: 32px; margin-bottom: 10px; }
+        .header .meta { color: #6b7280; font-size: 16px; }
+        .score-badge {
+            display: inline-block; background: #3B82F6; color: white;
+            padding: 8px 20px; border-radius: 20px; font-weight: bold; margin-top: 15px;
+        }
+        .reports-grid { display: grid; gap: 20px; }
+        .report-card {
+            background: white; border-radius: 16px; padding: 25px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            display: flex; align-items: center; justify-content: space-between;
+            transition: transform 0.2s, box-shadow 0.2s;
+            text-decoration: none;
+        }
+        .report-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+        }
+        .report-info h3 { color: #1f2937; font-size: 18px; margin-bottom: 5px; }
+        .report-info p { color: #6b7280; font-size: 14px; }
+        .report-btn {
+            padding: 12px 24px; background: #4472C4; color: white;
+            text-decoration: none; border-radius: 8px; font-weight: 500;
+        }
+        .report-btn:hover { background: #375a9e; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>亚马逊品类选品分析报告</h1>
+            <div class="meta">品类: Cell Phone Basic Cases | 站点: US | 日期: 2026-03-03</div>
+            <div class="score-badge">综合评分: 79/100 (良好)</div>
+        </div>
+
+        <div class="reports-grid">
+            <a href="dashboard.html" class="report-card">
+                <div class="report-info">
+                    <h3>HTML 仪表板</h3>
+                    <p>交互式可视化仪表板，包含图表和详细数据展示</p>
+                </div>
+                <span class="report-btn">查看</span>
+            </a>
+
+            <a href="report.md" class="report-card">
+                <div class="report-info">
+                    <h3>Markdown 报告</h3>
+                    <p>完整的文字分析报告，适合阅读和分享</p>
+                </div>
+                <span class="report-btn">查看</span>
+            </a>
+
+            <a href="category_report_Cell_Phone_Basic_Cases_US.xlsx" class="report-card">
+                <div class="report-info">
+                    <h3>Excel 报告</h3>
+                    <p>电子表格格式，包含多个工作表和图表，便于数据分析</p>
+                </div>
+                <span class="report-btn">下载</span>
+            </a>
+
+            <a href="data.json" class="report-card">
+                <div class="report-info">
+                    <h3>原始数据 (JSON)</h3>
+                    <p>结构化的原始数据，供开发人员使用</p>
+                </div>
+                <span class="report-btn">查看</span>
+            </a>
+        </div>
+    </div>
+</body>
+</html>

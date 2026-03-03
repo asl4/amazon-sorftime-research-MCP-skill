@@ -3,7 +3,13 @@
     "allow": [
       "Bash(curl:*)",
       "Bash(mcp call:*)",
-      "Bash(mcp list:*)"
+      "Bash(mcp list:*)",
+      "Bash(python:*)",
+      "WebSearch",
+      "Bash(rm:*)",
+      "Bash(python3:*)",
+      "Bash(cat:*)",
+      "Bash(grep:*)"
     ]
   },
   "enableAllProjectMcpServers": true,
